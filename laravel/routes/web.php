@@ -10,7 +10,7 @@
 
 Auth::routes();
 
-Route::get('/item', 'ItemController@index')->name('index');
+Route::get('/item', 'ItemController@item')->name('item');
 
 Route::get('/detail/{id}', 'ItemController@detail')->name('detail');
 
@@ -37,6 +37,11 @@ Route::group(['prefix' => 'admin'], function() {
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
 	Route::post('logout', 'Admin\LoginController@logout')->name('admin.logout');
 	Route::get('home', 'Admin\HomeController@index')->name('admin.home');
-	Route::get('item', 'Admin\ItemController@index')->name('admin.index');
+	Route::get('item', 'Admin\ItemController@item')->name('admin.item');
 	Route::get('detail/{id}', 'Admin\ItemController@detail')->name('admin.detail');
+	Route::get('add', 'Admin\ItemController@add')->name('admin.add');
+	Route::post('add', 'Admin\ItemController@create')->name('admin.create');
+	Route::get('edit/{id}', 'Admin\ItemController@edit')->name('admin.edit');
+	Route::post('edit/{id}', 'Admin\ItemController@update')->name('admin.update');
 });
+

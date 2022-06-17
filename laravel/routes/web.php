@@ -10,9 +10,26 @@
 
 Auth::routes();
 
-Route::get('/item', 'ItemController@item')->name('item');
+//アイテム
+Route::group(['prefix' => 'item'], function() {
+	Route::get('index', 'ItemController@index')->name('item.index');
+	Route::get('/detail/{id}', 'ItemController@detail')->name('item.detail');
+});
 
-Route::get('/detail/{id}', 'ItemController@detail')->name('detail');
+//カート
+Route::group(['prefix' => 'cart', 'middleware' => 'auth:user'], function() {
+	Route::post('add', 'CartController@add')->name('cart.add');
+	Route::get('index', 'CartController@index')->name('cart.index');
+	Route::post('remove', 'CartController@remove')->name('cart.remove');
+});
+
+//お届け先住所
+Route::group(['prefix' => 'adress', 'middleware' => 'auth:user'], function() {
+	Route::post('index', 'CartController@index')->name('adress.index');
+	Route::post('add', 'CartController@add')->name('adress.add');
+	Route::post('edit', 'CartController@edit')->name('adress.edit');
+	Route::post('remove', 'CartController@edit')->name('adress.remove');
+});
 
 //User認証不要
 Route::get('/', function() {

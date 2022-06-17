@@ -7,11 +7,11 @@ use App\Item;
 
 class ItemController extends Controller {
 
-	public function item() {
+	public function index() {
 
 		$items = Item::all();
 
-		return view('item.item', ['items' => $items]);
+		return view('item.index', ['items' => $items]);
 	}
 
 	public function detail($id) {

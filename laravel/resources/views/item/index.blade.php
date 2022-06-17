@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="utf-8">
-<title>Item</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('content')
+@if (session('success'))
+{{session('success')}}
+@endif
 <table border="1">
 <h1>商品一覧</h1>
 <tr>
@@ -15,7 +14,7 @@
 @foreach ($items as $item)
 <tr>
 <td>
-<a href="{{route('detail', ['id' => $item->id])}}">{{$item->name}}</a>
+<a href="{{route('item.detail', ['id' => $item->id])}}">{{$item->name}}</a>
 </td>
 <td>{{$item->price}}</td>
 <td>
@@ -28,5 +27,5 @@
 </tr>
 @endforeach
 </table>
-</body>
-</html>
+<a href="{{route('cart.index')}}">カートへ</a>
+@endsection

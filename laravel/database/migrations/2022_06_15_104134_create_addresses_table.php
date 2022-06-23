@@ -18,11 +18,11 @@ class CreateAddressesTable extends Migration
 			$table->unsignedInteger('user_id');
 			$table->foreign('user_id')->references('id')->on('users')->onUpdata('cascade')->onDelete('cascade');
 			$table->string('name');
-			$table->integer('postal_code');
+			$table->string('postal_code');
 			$table->string('prefecture');
 			$table->string('city');
-			$table->string('address_line');
-			$table->integer('phone_number');
+			$table->string('adress_line');
+			$table->string('phone_number');
             $table->timestamps();
 			$table->string('delete_flag')->default('off');
         });

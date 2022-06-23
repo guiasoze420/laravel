@@ -25,10 +25,12 @@ Route::group(['prefix' => 'cart', 'middleware' => 'auth:user'], function() {
 
 //お届け先住所
 Route::group(['prefix' => 'adress', 'middleware' => 'auth:user'], function() {
-	Route::post('index', 'CartController@index')->name('adress.index');
-	Route::post('add', 'CartController@add')->name('adress.add');
-	Route::post('edit', 'CartController@edit')->name('adress.edit');
-	Route::post('remove', 'CartController@edit')->name('adress.remove');
+	Route::get('index', 'AdressController@index')->name('adress.index');
+	Route::get('add', 'AdressController@add')->name('adress.add');
+	Route::post('add', 'AdressController@create')->name('adress.create');
+	Route::get('edit/{id}', 'AdressController@edit')->name('adress.edit');
+	Route::post('edit', 'AdressController@update')->name('adress.update');
+	Route::get('remove/{id}', 'AdressController@remove')->name('adress.remove');
 });
 
 //User認証不要

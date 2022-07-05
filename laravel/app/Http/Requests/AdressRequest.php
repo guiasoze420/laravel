@@ -30,7 +30,7 @@ class AdressRequest extends FormRequest {
 			'phone_number' => 'required|numeric|digits_between:10,11',
 		];
 	}
-	public function massages() {
+	public function messages() {
 		return [
 			'name.required' => '名前を入力して下さい',
 			'postal_code.required' => '郵便番号を入力して下さい',

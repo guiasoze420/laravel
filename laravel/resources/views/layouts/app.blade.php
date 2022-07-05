@@ -63,6 +63,9 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
+									<li>
+										<a href="{{route('userEdit.edit')}}">アカウント編集</a>
+									</li>
                                 </ul>
                             </li>
                         @endguest

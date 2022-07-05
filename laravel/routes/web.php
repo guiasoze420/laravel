@@ -25,6 +25,15 @@ Route::group(['prefix' => 'adress', 'middleware' => 'auth:user'], function() {
 	Route::get('remove/{id}', 'AdressController@remove')->name('adress.remove');
 });
 
+//アカウント編集
+Route::group(['prefix' => 'userEdit', 'middleware' => 'auth:user'], function() {
+	Route::get('edit', 'UserEditController@edit')->name('userEdit.edit');
+	Route::post('edit', 'UserEditController@update')->name('userEdit.update');
+	Route::get('email', 'UserEditController@sendChangeEmailLink')->name('userEdit.sendEmail');
+	Route::get('reset/{token}', 'UserEditController@reset')->name('userEdit.reset');
+
+});
+
 //User認証不要
 Route::get('/', function() {
 	return redirect('/home');
@@ -54,5 +63,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
 	Route::post('add', 'Admin\ItemController@create')->name('admin.create');
 	Route::get('edit/{id}', 'Admin\ItemController@edit')->name('admin.edit');
 	Route::post('edit/{id}', 'Admin\ItemController@update')->name('admin.update');
+	Route::get('users', 'Admin\UserController@index')->name('admin.users_index');
+
+
 });
 

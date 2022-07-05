@@ -58,7 +58,9 @@
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
-
+										<a href="#">
+										会員一覧
+										</a>
                                         <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
